@@ -106,3 +106,12 @@ publishing:
     enableTaskNotes: true
     enablePrettyLinks: true
     searchMode: search
+site:
+    copyAssets: true
+    siteHierarchies:
+        - lib
+    siteRootDir: docs
+    usePrettyRefs: true
+    title: dexdy
+publishing:
+    siteUrl: https://dexdy.ai
