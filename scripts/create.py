@@ -1,4 +1,3 @@
-import sys
 import re
 import uuid
 import datetime
@@ -7,9 +6,13 @@ import requests
 import tldextract
 import html2text
 
-def get_html_title(html_content):
+def get_html_title(url, html_content):
     match = re.search('<title>(.*?)</title>', html_content, re.IGNORECASE)
-    return match.group(1).strip() if match else 'Unknown Title'
+    if match:
+        return match.group(1).strip()
+    else:
+        # Constructing a fallback title from the URL
+        return url.split('/')[-1].replace('-', ' ').replace('_', ' ').title()
 
 def create_note_filename(url, title):
     extracted = tldextract.extract(url)
@@ -35,24 +38,28 @@ def create_note_filename(url, title):
 
 def create_note_content(url, title, markdown_content, full_domain):
     now = int(datetime.datetime.now().timestamp() * 1000)
-    content = (
+    frontmatter = (
         "---\n"
         f"id: {uuid.uuid4()}\n"
         f"title: {title} ({full_domain})\n"
         f"updated: {now}\n"
         f"created: {now}\n"
-        f"url: {url}\n"
         "---\n\n"
     )
-    return content + markdown_content if markdown_content else content
+    url_line = f"URL :: {url}\n\n"
+    return frontmatter + url_line + markdown_content
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 scripts/create.py <url>")
-        sys.exit(1)
-
-    url = sys.argv[1]
+def main():
     try:
+        url = input("Enter the URL of the page: ")
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            html_content = response.text
+        except requests.RequestException:
+            html_content = ""
+        
+        title = get_html_title(url, html_content)
         extracted = tldextract.extract(url)
         domain = extracted.domain
         suffix = extracted.suffix
@@ -61,9 +68,16 @@ if __name__ == "__main__":
         # Forming full domain excluding 'www'
         full_domain = '.'.join(part for part in [subdomain, domain, suffix] if part and part != "www")
 
-        html_content = sys.stdin.read() if not sys.stdin.isatty() else requests.get(url).text
-        title = get_html_title(html_content)
-        markdown_content = html2text.html2text(html_content) if not sys.stdin.isatty() else ""
+        print("Enter HTML content (press Ctrl+D to end input):")
+        html_content_user = []
+        while True:
+            try:
+                line = input()
+            except EOFError:
+                break
+            html_content_user.append(line)
+        html_content_user = "\n".join(html_content_user)
+        markdown_content = html2text.html2text(html_content_user) if html_content_user else ""
 
         file_name = create_note_filename(url, title)
         content = create_note_content(url, title, markdown_content, full_domain)
@@ -73,4 +87,7 @@ if __name__ == "__main__":
         print(f"File created: {file_name}")
     except Exception as e:
         print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    main()
 
