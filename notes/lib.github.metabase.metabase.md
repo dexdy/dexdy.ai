@@ -1,11 +1,12 @@
 ---
 id: kvxetbuzchaj6hwmsccoet2
-title: Metabase
+title: metabase/metabase
 desc: ''
 updated: 1701604554781
 created: 1701602908966
-url: https://github.com/metabase/metabase
 ---
+
+URL :: https://github.com/metabase/metabase
 
 The webpage introduces **_Metabase_**, an _open-source data analytics platform_ that lets users create interactive dashboards, models, and alerts from raw tables. It covers:
 
