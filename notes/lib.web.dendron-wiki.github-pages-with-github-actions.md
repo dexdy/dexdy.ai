@@ -7,7 +7,7 @@ created: 1701602398999
 ---
 
 URL :: https://wiki.dendron.so/notes/FnK2ws6w1uaS1YzBUY3BR/
-
+``
 This part of the current page talks about:
 
 - **GitHub Actions**: Automates publishing of notes to GitHub Pages upon new commits to the main branch.
