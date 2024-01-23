@@ -1,6 +1,6 @@
 ---
 id: 3ad94008-a385-4e08-8b00-ceb32a852747
-title: Youtube Subtitle Downloader - DownloadYoutubeSubtitles.com
+title: Downloadyoutubesubtitles Com
 desc: ''
 updated: 1702025911884
 created: 1702025911884
