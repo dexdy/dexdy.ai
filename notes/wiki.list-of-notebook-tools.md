@@ -13,7 +13,7 @@ created: 1705910183165
 5. **Hex** (Proprietary, Fully managed)
 6. **Databricks Notebooks** (Proprietary, Self-hosted or fully managed)
 7. **DataCamp Workspace** (Proprietary, Fully managed)
-8. **JupyterLab** (Open Source, Self-hosted)
+8. *
 9. **CoCalc** (Open Source, Self-hosted or fully managed)
 10. **Hyperquery** (Proprietary, Fully managed)
 11. **Jetbrains Datalore** (Proprietary, Fully managed)
