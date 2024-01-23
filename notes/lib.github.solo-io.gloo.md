@@ -9,7 +9,7 @@ created: 1705916949619
 URL :: https://github.com/solo-io/gloo
 
 **Introduction:**
-Gloo Gateway, formerly Gloo Edge, is a Kubernetes-native API gateway powered by Envoy Proxy. It supports function-level routing, legacy, microservices, and serverless architectures.
+Gloo Gateway, formerly Gloo Edge, is a Kubernetes-native API gateway powered by 
 
 **Key Features:**
 - **Versatility:** Acts as a Kubernetes ingress controller and feature-rich API gateway.
