@@ -1,6 +1,7 @@
 ---
 id: 68e5aac3-31ef-4aa5-a429-f2ee65c05ff3
 title: 'HashiTalks: Deploy Day 2 - YouTube (youtube.com)'
+desc: ''
 updated: 1702025271999
 created: 1702025271999
 ---
