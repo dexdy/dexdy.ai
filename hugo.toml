@@ -1,0 +1,4 @@
+baseURL = 'https://dexdy.ai/'
+languageCode = 'en-us'
+title = 'Dexdy'
+theme = 'ananke'
